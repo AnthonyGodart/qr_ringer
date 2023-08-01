@@ -1,0 +1,20 @@
+:root{
+    --primary: rgb(253, 71, 71);
+    --secondary: rgb(255, 128, 206);
+    --tertiary: rgb(169, 0, 166);
+}
+
+.btn{
+    border: 5px solid black;
+    border-radius: 10px;
+    width: 60%;
+    height: 10%;
+    background: linear-gradient(0.4turn, var(--btn-tertiary), var(--btn-secondary), var(--btn-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
