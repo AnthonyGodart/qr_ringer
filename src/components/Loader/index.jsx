@@ -17,7 +17,7 @@ const Loader = () => {
   return (
     <div className={`loading-page ${isLoading ? 'show' : 'hide'}`}>
       <div className="loader"></div>
-      <h1>Appel en cours...</h1>
+      <h1>Votre correspondant est informé de votre présence. Merci de patienter...</h1>
     </div>
   );
 };

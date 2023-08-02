@@ -8,13 +8,14 @@ function Main(){
     const [name, setName] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
+    const [isPremium, setIsPremium] = useState(false);
+    console.log(setIsPremium);
 
     function handleNameChange(e) {
         setName(e.target.value);
     };
 
     function handleBellClick() {
-            setName('');
             setIsButtonClicked(true);
             setShowLoader(true);
             const options = {
@@ -26,7 +27,7 @@ function Main(){
                 },
                 body: JSON.stringify({
                   included_segments: ['Active Users'],
-                  contents: {en: `${name} sonne à votre porte.`},
+                  contents: {en: `${name !== "" ? name : 'Quelqu\'un'} sonne à votre porte.`},
                   app_id: '8587f4cc-c900-4b84-b845-d4e680d4fa3e'
                 })
               };
@@ -36,6 +37,7 @@ function Main(){
                 .then(response => console.log(response))
                 .catch(err => console.error(err));
 
+            setName('');
             const delayInMinutes = 0.2;
             const delayInMilliseconds = delayInMinutes * 60 * 1000;
             setTimeout(() => {
@@ -46,11 +48,11 @@ function Main(){
 
     return (
         <main>
-            <NameField value={name} 
+            {isPremium &&<NameField value={name} 
                 onChange={handleNameChange}
-                disabled={isButtonClicked}/>
+                disabled={isButtonClicked}/>}
             <Bell onClick={() => handleBellClick()} 
-                disabled={name === ''}/>
+                disabled={isButtonClicked}/>
             {showLoader? 
             <Loader/> : null}
         </main>
