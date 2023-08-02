@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import './loader.module.css';
+import './notified.module.css';
 
-const Loader = () => {
+const Notified = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,10 +15,11 @@ const Loader = () => {
   }, []);
 
   return (
-    <div className={`loading-page ${isLoading ? 'show' : 'hide'}`}>
-      <h1 className='title'>Votre correspondant est informé de votre présence. Merci de patienter...</h1>
+    <div className={`notified-page ${isLoading ? 'show' : 'hide'}`}>
+      <h1>Votre correspondant a été informé de votre présence. Vous pouvez maintenant quitter cette page.</h1>
+      <p>Pour sonner à nouveau, re-scannez le QR Code</p>
     </div>
   );
 };
 
-export default Loader;
+export default Notified;
