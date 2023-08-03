@@ -2,14 +2,13 @@ import './main.module.css'
 import React, { useState, useEffect } from 'react';
 import Bell from '../Bell'
 import NameField from '../NameField';
-import Loader from '../Loader';
 import Notified from '../Notified';
 
 function Main(){
     function removeUserIdFromUrl() {
-        const newUrl = window.location.href.replace(/(\?|&)userId=.*$/, '');
-        window.history.replaceState(null, '', newUrl);
-      }
+      const newUrl = window.location.href.replace(/(\?|&)userId=.*$/, '');
+      window.history.replaceState(null, '', newUrl);
+    }
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,16 +16,12 @@ function Main(){
 
     if (userId) {
       sessionStorage.setItem('userId', userId);
-      console.log('userId :', userId);
-      const receiver = sessionStorage.getItem('userId');
-      console.log('receiver :', receiver);
       removeUserIdFromUrl();
     }
   }, []);
 
     const [name, setName] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false);
-    const [showLoader, setShowLoader] = useState(false);
     const [isNotified, setIsNotified] = useState(false);
     const [isPremium, setIsPremium] = useState(false);
     console.log(setIsPremium);
@@ -36,9 +31,8 @@ function Main(){
 
     function handleBellClick() {
             setIsButtonClicked(true);
-            setShowLoader(true);
             const receiver = sessionStorage.getItem('userId');
-            console.log('receiver :', receiver);
+
             const options = {
                 method: 'POST',
                 headers: {
@@ -64,10 +58,15 @@ function Main(){
             const delayInMilliseconds = delayInMinutes * 60 * 1000;
             setTimeout(() => {
                 setIsButtonClicked(false);
-                setShowLoader(false);
                 setIsNotified(true);
                 sessionStorage.removeItem('userId');
             }, delayInMilliseconds )
+    };
+
+    function showNotifiedText(){
+      return(
+        isNotified? <Notified/> : null 
+      )
     };
 
     return (
@@ -76,9 +75,8 @@ function Main(){
                 onChange={handleNameChange}
                 disabled={isButtonClicked}/>}
             {isNotified? null : <Bell onClick={() => handleBellClick()} 
-                disabled={isNotified}/>}
-            {showLoader?
-            <Loader/> : isNotified? <Notified/> : null }
+                disabled={isNotified} isClicked={isButtonClicked}/>}
+            {showNotifiedText()}
         </main>
     )
 }

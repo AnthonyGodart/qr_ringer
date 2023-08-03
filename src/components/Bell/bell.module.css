@@ -1,20 +1,81 @@
-:root{
-    --primary: rgb(253, 71, 71);
-    --secondary: rgb(255, 128, 206);
-    --tertiary: rgb(169, 0, 166);
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+
+button {
+  font-family:inherit;
+  display:block;
+  position: relative;
+  padding:0;
+  width: 80vw;
+  height: 80vw;
+  margin:0 auto;
+  margin-top:20%;
+  background: transparent;
+  border:none;
 }
 
-.btn{
-    border: 5px solid black;
-    border-radius: 10px;
-    width: 60%;
-    height: 10%;
-    background: linear-gradient(0.4turn, var(--btn-tertiary), var(--btn-secondary), var(--btn-primary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    text-transform: uppercase;
+.ring {
+  top: 0;
+  mix-blend-mode: lighten;
+  color:white;
+  position: absolute;
+  height:100%;
+  width:100%;
+  border: 4vw solid;
+  border-radius: 50%;
+  /*box-shadow:0 0 20px white;*/
+  background: transparent;
+  transition: all .1s;
+  animation: move 3s linear infinite;
+}
+
+.r1 {
+  transform-origin: 48% 48%;
+  filter: blur(0px) drop-shadow(0 0 20px #800ec7);
+}
+
+.r2 {
+  transform-origin: 49% 48%;
+  animation-delay: -1s;
+  filter: blur(0px) drop-shadow(0 0 20px #14b717);
+}
+
+.r3 {
+  transform-origin: 51% 50%;
+  animation-delay: -2s;
+  filter: blur(0px) drop-shadow(0 0 20px #ff00a0);
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(0deg) rotateY(0deg) translateX(0vw);
+  }
+
+  50% {
+    transform: rotate(180deg) rotateY(30deg) translateX(3vw);
+  }
+
+  100% {
+    transform: rotate(360deg) rotateY(0deg) translateX(0vw);
+  }
+}
+
+button span {
+  color: white;
+  position: relative;
+  z-index: 1;
+  font-size:10vw;
+  text-transform:uppercase;
+  font-family: 'Gruppo', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+button.calling .ring {
+  background: white;
+  animation: move .5s linear infinite;
+}
+
+
+button.calling span {
+  color: black;
 }
