@@ -4,7 +4,7 @@ function Header(){
 
     return (
         <header>
-            <div id='title' className={styles.title}> QR Ringer </div>
+            <div id='title' className={styles.title}> Ma Sonnette </div>
             {/*<div id='paramBtn' className={isLogged ? styles.loggedParamIcon : styles.paramIcon}>&#9881;</div>
             <div id='logBtn'
                 onClick={handleClick} 

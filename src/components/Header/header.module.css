@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
+
 header{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -7,40 +9,11 @@ header{
     height: 10vh;
 }
 
-.loggedHeader{
-    grid-template-columns: repeat(3, 1fr);
-}
-
 .title{
+    padding-top: 15px;
+    font-family: 'Borel', sans-serif;
     font-weight: 800;
-    font-size: 60px;
+    font-size: 50px;
     color: #FFF;
     text-align: center;
-}
-.paramIcon{
-    font-size: 72px;
-    text-align: center;
-    display: none;
-}
-.loggedParamIcon{
-    font-size: 72px;
-    text-align: center;
-}
-
-.btn{
-    font-size: 70px;
-    text-align: center;
-}
-
-.profile{
-    display: none;
-}
-img{
-    width: 50px;
-    height: 50px;
-}
-.loggedProfile{
-    display: flex;
-    align-items: center;
-    justify-content: center;   
 }
