@@ -13,10 +13,12 @@ function Main(){
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
+    console.info('UserId récupéré :', userId)
 
-    if (userId) {
+    if (!userId) {
+      console.error('Error : récupération userId impossible !')
+    } else {
       sessionStorage.setItem('userId', userId);
-      removeUserIdFromUrl();
     }
   }, []);
 
@@ -31,7 +33,10 @@ function Main(){
 
     function handleBellClick() {
             setIsButtonClicked(true);
-            const receiver = sessionStorage.getItem('userId');
+            const storedReceiver = sessionStorage.getItem('userId');
+            const urlReceiver = new URLSearchParams(window.location.search).get('userId');
+            console.info(storedReceiver);
+            console.info(urlReceiver);
 
             const options = {
                 method: 'POST',
@@ -41,7 +46,7 @@ function Main(){
                   'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                  include_player_ids: [ receiver ],
+                  include_player_ids: [ urlReceiver ],
                   contents: {en: `${name !== "" ? name : 'Quelqu\'un'} sonne à votre porte.`},
                   name: "QR Ringer",
                   app_id: process.env.REACT_APP_ONESIGNAL_APP_ID
@@ -59,6 +64,7 @@ function Main(){
             setTimeout(() => {
                 setIsButtonClicked(false);
                 setIsNotified(true);
+                removeUserIdFromUrl();
                 sessionStorage.removeItem('userId');
             }, delayInMilliseconds )
     };

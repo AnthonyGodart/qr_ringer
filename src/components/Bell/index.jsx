@@ -6,7 +6,7 @@ function Bell({ onClick, disabled }){
 
     useEffect(() => {
         if (isCalling) {
-          const delayInMilliseconds = 30000;
+          const delayInMilliseconds = 15000;
           setTimeout(() => {
             setIsCalling(false);
           }, delayInMilliseconds);
@@ -19,7 +19,7 @@ function Bell({ onClick, disabled }){
       }
 
     return(
-        <button onClick={handleClick} disabled={disabled} className={isCalling ? 'calling' : ''}>
+        <button onClick={handleClick} disabled={disabled||isCalling} className={isCalling ? 'calling' : ''}>
             <div className={`${styles.ring} ${styles.r1}`}></div>
             <div className={`${styles.ring} ${styles.r2}`}></div>
             <div className={`${styles.ring} ${styles.r3}`}></div>

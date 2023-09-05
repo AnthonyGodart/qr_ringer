@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
 
-:root {
-  --primary: rgb(253, 71, 71);
-  --secondary: rgb(255, 128, 206);
-  --tertiary: rgb(169, 0, 166);
-}
-  
 .notified-page {
   display: flex;
   flex-direction: column;
@@ -13,9 +7,6 @@
   align-items: center;
   height: 100vh;
   background-color: #000;
-  /* background: linear-gradient(0.4turn, var(--primary), var(--secondary), var(--tertiary)); /* Utilisation de la variable de couleur --primary */
-  color: #fff;
-  font-size: 24px;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -29,8 +20,6 @@
 }
   
 .notified {
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid #fff;
   border-radius: 50%;
   width: 40px;
   height: 40px;
