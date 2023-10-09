@@ -34,9 +34,7 @@ function Main(){
     function handleBellClick() {
             setIsButtonClicked(true);
             const storedReceiver = sessionStorage.getItem('userId');
-            const urlReceiver = new URLSearchParams(window.location.search).get('userId');
             console.info(storedReceiver);
-            console.info(urlReceiver);
 
             const options = {
                 method: 'POST',
@@ -46,7 +44,7 @@ function Main(){
                   'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                  include_player_ids: [ urlReceiver ],
+                  include_player_ids: [ storedReceiver],
                   contents: {en: `${name !== "" ? name : 'Quelqu\'un'} sonne à votre porte.`},
                   name: "QR Ringer",
                   app_id: process.env.REACT_APP_ONESIGNAL_APP_ID
